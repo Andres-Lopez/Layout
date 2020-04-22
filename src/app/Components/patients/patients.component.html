@@ -1,0 +1,86 @@
+<form>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="Name">Nombre:</label>
+        <input type="text" class="form-control rounded" (keyup)="getPatientByFilter(Name)" id="Name" value="" #Name>
+      </div>
+    </div>
+  </div>
+</form>
+
+<dx-data-grid id="gridContainer" [dataSource]="patients" [columns]="['Nombre', 'Ciudad', 'Estado', 'Telefono', 'Fax']"
+  [showBorders]="true">
+  <dxo-selection [selectAllMode]="allMode" [showCheckBoxesMode]="checkBoxesMode" mode="multiple"></dxo-selection>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+</dx-data-grid>
+
+<div class="row">
+  <div class="col-md-8 col-0">
+
+  </div>
+  <div class="col-md-1 col">
+    <button type="button" class="btn btn-default btn-circle btn-xl">
+      <fa-icon [icon]="icoPrint"></fa-icon>
+    </button>
+  </div>
+  <div class="col-md-1 col">
+    <button type="button" class="btn btn-default btn-circle btn-xl">
+      <fa-icon [icon]="icoCalendar"></fa-icon>
+    </button>
+  </div>
+  <div class="col-md-1 col">
+    <button type="button" class="btn btn-default btn-circle btn-xl" style="background-color: #DC3545;">
+      <fa-icon [icon]="icoTimes"></fa-icon>
+    </button>
+  </div>
+</div>
+
+<div class="row justify-content-md-center" style="margin-top: 20px;">
+  <div class="col-md-8 col-0">
+
+  </div>
+  <div class="col-md-3 col">
+    <button type="button" (click)="open(Validate)" class="btn btn-default-oval">
+      <strong>Programar Nueva cita</strong>
+    </button>
+  </div>
+  <div class="col-md-1 col">
+    <button type="button" class="btn btn-danger-oval">
+      <strong>Salir</strong>
+    </button>
+  </div>
+</div>
+
+
+<ng-template #Validate let-modal>
+  <div class="modal-body text-center">
+
+    <button type="button" (click)="open(Validate)" class="btn btn-default btn-circle btn-xl" style="background-color: #DC3545;">
+      <strong>!</strong>
+    </button>
+
+    <h5 style="margin-top: 30px;">Validacion de derechos</h5>
+
+    <p style="margin-top: 30px;">El paciente no cuenta con derechos en la base de datos de su asegurador, por favor comuniquese con su asegurador para solucionar el inconveniente o puede seguir usando nuestros servicios como paciente particular</p>
+
+    <p style="margin-top: 30px;">si desea continuar usando nuestros servicios como particular, seleccione continuar, de lo contrario elija salir</p>
+
+    <div class="row" style="margin-top: 30px;">
+
+      <div class="col-md-6">
+        <button type="button" class="btn btn-default-oval"  style="background-color: green;" (click)="modal.close('Save click')">
+          <strong>Continuar</strong>
+        </button>
+      </div>
+
+      <div class="col-md-6">
+        <button type="button" class="btn btn-danger-oval" (click)="modal.close('Save click')">
+          <strong>Salir</strong>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</ng-template>

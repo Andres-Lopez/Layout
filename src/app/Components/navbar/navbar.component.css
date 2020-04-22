@@ -1,0 +1,21 @@
+.navbar-brand.abs
+{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 4px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  background-color: #23233E;
+  color: white;
+  font-size: 15px;
+}
